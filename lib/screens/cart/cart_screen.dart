@@ -30,7 +30,7 @@ class CartScreen extends StatelessWidget {
                   widgets: demoItems.map((e) {
                     return Container(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 25,
+                        horizontal: 15,
                       ),
                       width: double.maxFinite,
                       child: ChartItemWidget(

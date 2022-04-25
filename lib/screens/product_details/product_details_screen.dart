@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/common_widgets/app_button.dart';
 import 'package:grocery_app/common_widgets/app_text.dart';
 import 'package:grocery_app/models/grocery_item.dart';
+import 'package:grocery_app/screens/category_items_screen.dart';
 import 'package:grocery_app/widgets/item_counter_widget.dart';
 
 import 'favourite_toggle_icon_widget.dart';
@@ -72,13 +73,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     Divider(thickness: 1),
                     getProductDataRowWidget("Product Details"),
                     Divider(thickness: 1),
-                    getProductDataRowWidget("Nutritions",
-                        customWidget: nutritionWidget()),
+                    /*getProductDataRowWidget("Nutritions",
+                        customWidget: nutritionWidget()),*/
                     Divider(thickness: 1),
-                    getProductDataRowWidget(
+                    /*getProductDataRowWidget(
                       "Review",
                       customWidget: ratingWidget(),
-                    ),
+                    ),*/
                     Spacer(),
                     AppButton(
                       label: "Add To Basket",
@@ -124,8 +125,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   Widget getProductDataRowWidget(String label, {Widget customWidget}) {
     return Container(
       margin: EdgeInsets.only(
-        top: 20,
-        bottom: 20,
+        top: 5,
+        bottom: 5,
       ),
       child: Row(
         children: [
@@ -134,12 +135,17 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           if (customWidget != null) ...[
             customWidget,
             SizedBox(
-              width: 20,
+              width: 10,
             )
           ],
-          Icon(
-            Icons.arrow_forward_ios,
-            size: 20,
+          IconButton(
+            icon: Icon(Icons.arrow_forward_ios),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CategoryItemsScreen()));
+            },
           )
         ],
       ),
